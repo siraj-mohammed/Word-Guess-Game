@@ -24,12 +24,20 @@ var validInput = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p
 var userInput = ''; // Stores the key/letter pressed by the user
 var countWins = 0; // Counts games won by the user
 var dispWord = ''; // The current word that displayed on the screen
-var lettersGuessed = []; // Stores the letters guessed by the user
-var correctGuesses = [];
+var lettersGuessed = []; // Stores the letters incorrectly guessed by the user
+var correctGuesses = []; // Stores correct user guesses. Used to to loop through and build the displayed word/string.
 var countGuesses = 0; // Counts the guesses the user has remaining
 
-// Select a random word from the list
-guessWord = wordList[Math.floor(Math.random() * wordList.length)];
+// Reset the game
+function resetGame(){
+    userInput='';
+    lettersGuessed = [];
+    correctGuesses = [];
+    countGuesses = 0;
+    guessWord = wordList[Math.floor(Math.random() * wordList.length)];
+    generateDispWord();
+    Display();
+}
 
 // Build the word that's displayed to the user
 function generateDispWord(){
@@ -45,9 +53,6 @@ function generateDispWord(){
     return dispWord;
 }
 
-window.onload = Display;
-generateDispWord();
-
 // Populate the default values
 function Display(){
     document.getElementById("wins").textContent = countWins;
@@ -55,6 +60,13 @@ function Display(){
     document.getElementById("guessesLeft").textContent = 10 - countGuesses;
     document.getElementById("lettersGuessed").textContent = lettersGuessed;
     console.log("Random word is: " + guessWord);
+}
+
+window.onload = init
+
+function init(){
+    resetGame();
+    Display();
 }
 
 // Trigger this function when a key is pressed
@@ -72,11 +84,26 @@ document.onkeyup = function(event) {
         countGuesses++;
         Display();
     }
-    // User guessed a letter correctly
-    else if(guessWord.indexOf(userInput) > -1){
+    // User guessed a letter correctly and it was not already guessed
+    else if(guessWord.indexOf(userInput) > -1 && correctGuesses.indexOf(userInput) == -1){
         correctGuesses.push(userInput);
         generateDispWord();
         Display();
+    }
+
+    // If the user runs out of guesses, end the game
+    if (countGuesses == 10){
+        alert("Sorry dude, you just killed him!");
+        resetGame();
+    }
+
+    // User wins if none of the letters in the displayed word is masked,
+    // because the user has correctly guessed all the letters
+    if (dispWord.indexOf("_") == -1){
+        countWins++;
+        generateDispWord();
+        Display();
+        resetGame();
     }
 }
 
