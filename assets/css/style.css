@@ -1,0 +1,32 @@
+
+body{
+    background-color: #333333;
+    background-image: url(../images/marvel-vs-dc-civil-war.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    letter-spacing: 4px;
+    height: 100%;
+    margin: 0;
+}
+
+.banner{
+    background-color: #333333;
+    margin-top: 40px;
+    padding: 20px;
+    border: solid 2px wheat;
+    color:wheat;
+}
+
+.game{
+    background-color: #333333;
+    margin-top: 40px;
+    padding: 40px;
+    height: 450px;
+    border: solid 2px wheat;
+    font-size: 20px;
+    color: wheat;
+}
+
+.blank{
+    height: 30px;
+}

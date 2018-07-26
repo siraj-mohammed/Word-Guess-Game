@@ -6,21 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <script src="assets/javascript/game.js"></script>
+    
 </head>
-<body class="text-uppercase text-center" style="line-height:40px">
+<body class="text-uppercase text-center">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h2>Hangman</h2>
-                <h5 >Guess the word!</h5>
-                <h6>type a letter to get started!</h6>
+            <div class="col-md-2"></div>
+            <div class="col-md-8 banner">
+                    <h1><strong>Hangman</strong></h1>
+                    <h5 >Guess the name!</h5>
+                    <p><em>Type a letter to get started...</em></p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 game">
                 <div>Current Word: <div id="dispWord"></div></div>
+                <div class="blank"></div>
                 <div>Wins: <div id="wins">0</div></div>                
+                <div class="blank"></div>
                 <div>Guesses Remaining: <div id="guessesLeft"></div></div>
+                <div class="blank"></div>
                 <div>Letters Guessed: <div id="lettersGuessed"></div></div>
             </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
+    <script src="assets/javascript/game.js"></script>
 </body>
 </html>
