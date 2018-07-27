@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>Hangman | Let's Play!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    
 </head>
 <body class="text-uppercase text-center">
     <div class="container">
@@ -15,7 +15,6 @@
             <div class="col-md-8 banner">
                     <h1><strong>Hangman</strong></h1>
                     <h5 >Guess the name!</h5>
-                    <p><em>Type a letter to get started...</em></p>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -32,7 +31,28 @@
             </div>
             <div class="col-md-2"></div>
         </div>
+        <div id="splash">
+            <h4><strong>Welcome</strong></h4>
+            <p id="message">Guess the word being displayed and type it out!</p><br>
+            <div id="game-controls">
+                <button class="btn btn-success btn-lg play-button" onclick="clickPlay()">
+                    <span class="fa fa-retweet"></span> New Game</button>
+                <button class="btn btn-warning btn-lg restart-button" onclick="clickAgain()">
+                    <span class="fa fa-play"></span> Continue</button>
+                <button class="btn btn-danger btn-lg quit-button" onclick="clickQuit()">
+                    <span class="fa fa-times"></span> Quit Game</button>
+            </div>
+        </div>
     </div>
+    <Audio id="error-audio">
+        <source src="assets/media/error.mp3">
+    </Audio>
+    <Audio id="win-audio">
+        <source src="assets/media/win.mp3">
+    </Audio>
+    <Audio id="lose-audio">
+        <source src="assets/media/lose.mp3">
+    </Audio>
     <script src="assets/javascript/game.js"></script>
 </body>
 </html>

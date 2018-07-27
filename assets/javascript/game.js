@@ -49,11 +49,16 @@ document.onkeyup = function(event) {
         generateDispWord();
         Display();
     }
+    else{
+        playAudio("error");
+    }
 
     // If the user runs out of guesses, end the game
     if (countGuesses == 12){
         Display();
-        resetGame();
+        document.getElementById("splash").style.display = "block";
+        document.getElementById("message").innerHTML = "Sorry! " + "It was \"" + guessWord + "\"";
+        playAudio("lose");
     }
 
     // User wins if none of the letters in the displayed word is masked,
@@ -62,7 +67,10 @@ document.onkeyup = function(event) {
         countWins++;
         generateDispWord();
         Display();
-        resetGame();
+        document.getElementById("splash").style.display = "block";
+        document.getElementById("message").innerHTML = "Congratulations! " + "It was \"" + guessWord + "\"";
+        playAudio("win");
+        //resetGame();
     }
 }
 
@@ -100,4 +108,52 @@ function resetGame(){
     Display();
 }
 
-resetGame();
+// When the user presses the "New Game" button on the splash screen
+function clickPlay(){
+    if(countWins > 0){
+        var check = confirm("This will start a new game. Are you sure?");
+        if (check){
+            document.getElementById("splash").style.display = "none";
+            countWins = 0;
+            resetGame();
+        }  
+    }
+    else{
+        document.getElementById("splash").style.display = "none";
+        countWins = 0;
+        resetGame();
+    }
+}
+
+// When the user presses the "Continue" button on the splash screen
+function clickAgain(){
+    if (countWins > 0){
+        document.getElementById("splash").style.display = "none";
+        resetGame();
+    }
+    else{
+        clickPlay();
+    }
+}
+
+// When the user presses the "Quit Game" button on the splash screen
+function clickQuit(){
+    var check = confirm("Are you sure you want to quit?");
+    if(check){
+        window.close();
+    }
+}
+
+// Play sounds
+function playAudio(file){
+    switch(file){
+        case "win":
+            document.getElementById("win-audio").play();
+            break;
+        case "lose":
+            document.getElementById("lose-audio").play();
+            break;
+        case "error":
+            document.getElementById("error-audio").play();
+    }
+}

@@ -21,7 +21,7 @@ body{
     background-color: #333333;
     margin-top: 40px;
     padding: 40px;
-    height: 450px;
+    height: 400px;
     border: solid 2px wheat;
     font-size: 20px;
     color: wheat;
@@ -29,4 +29,22 @@ body{
 
 .blank{
     height: 30px;
+}
+
+.container{
+    position: relative;
+}
+
+#splash{
+    position: absolute;
+    top: 18%;
+    left: 12%;
+    width: 75%;
+    height: 45%;
+    padding: 40px;
+    text-align: center;
+    background-color: black;
+    color: white;    
+    border: solid 5px red;
+    display: block;
 }
