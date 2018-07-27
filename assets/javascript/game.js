@@ -57,6 +57,7 @@ document.onkeyup = function(event) {
     if (countGuesses == 12){
         Display();
         document.getElementById("splash").style.display = "block";
+        document.getElementById("welcome").style.display = "none";
         document.getElementById("message").innerHTML = "Sorry! " + "It was \"" + guessWord + "\"";
         playAudio("lose");
     }
@@ -68,6 +69,7 @@ document.onkeyup = function(event) {
         generateDispWord();
         Display();
         document.getElementById("splash").style.display = "block";
+        document.getElementById("welcome").style.display = "none";
         document.getElementById("message").innerHTML = "Congratulations! " + "It was \"" + guessWord + "\"";
         playAudio("win");
         //resetGame();
