@@ -35,6 +35,7 @@ document.onkeyup = function(event) {
     
     // User pressed a key other than a letter
     if (validInput.indexOf(userInput) == -1){
+        playAudio("error");
         return false;
     }
     // Input is valid but user did not guess correctly, and the letter was not previously guessed
@@ -113,7 +114,7 @@ function resetGame(){
 // When the user presses the "New Game" button on the splash screen
 function clickPlay(){
     if(countWins > 0){
-        var check = confirm("This will start a new game. Are you sure?");
+        var check = confirm("This will reset your progress. Are you sure?");
         if (check){
             document.getElementById("splash").style.display = "none";
             countWins = 0;
